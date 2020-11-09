@@ -117,31 +117,36 @@ fn (mut ctx Context) resize_arr(size int) {
 	unsafe { *l = size }
 }
 
-fn (mut ctx Context) init() {
+[inline]
+fn (ctx &Context) init() {
 	if ctx.cfg.init_fn != voidptr(0) {
 		ctx.cfg.init_fn(ctx.cfg.user_data)
 	}
 }
 
-fn (mut ctx Context) frame() {
+[inline]
+fn (ctx &Context) frame() {
 	if ctx.cfg.frame_fn != voidptr(0) {
 		ctx.cfg.frame_fn(ctx.cfg.user_data)
 	}
 }
 
-fn (mut ctx Context) cleanup() {
+[inline]
+fn (ctx &Context) cleanup() {
 	if ctx.cfg.cleanup_fn != voidptr(0) {
 		ctx.cfg.cleanup_fn(ctx.cfg.user_data)
 	}
 }
 
-fn (ctx Context) fail(error string) {
+[inline]
+fn (ctx &Context) fail(error string) {
 	if ctx.cfg.fail_fn != voidptr(0) {
 		ctx.cfg.fail_fn(error)
 	}
 }
 
-fn (ctx Context) event(event &Event) {
+[inline]
+fn (ctx &Context) event(event &Event) {
 	if ctx.cfg.event_fn != voidptr(0) {
 		ctx.cfg.event_fn(event, ctx.cfg.user_data)
 	}
