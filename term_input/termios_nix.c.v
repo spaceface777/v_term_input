@@ -9,7 +9,6 @@ import time
 
 fn C.tcgetattr()
 fn C.tcsetattr()
-fn C.ioctl()
 struct C.termios {
 mut:
 	c_iflag u32
