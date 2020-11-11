@@ -249,6 +249,7 @@ fn escape_end(buf string) int {
 		}
 		i++
 	}
+	return i
 }
 
 fn escape_sequence(buf_ string) (&Event, int) {
